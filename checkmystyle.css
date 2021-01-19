@@ -1,23 +1,31 @@
 body {
-    font-family: 'Noto Sans ', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
     font-size: 18px;
     text-align: center;
 }
 
-#starthere {
-    background-color: rgb(36, 32, 32);
-    color: white;
+#logo {
+    margin-top: -50px;
 }
 
-#what {
 
+#city-select {
+    margin-top: -60px
+    }
+
+#lastdishes {
+    text-align: left;
+    }
+
+
+#lastdishes img {
+    width: 100%;
 }
 
-#how {}
+
 
 #tab-bar {
     background-color: white;
-    font-family:monospace;
     font-size: 12px;
     height: 60px;
     border-top: 0.5px lightgray solid;
@@ -26,20 +34,5 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-#lastworks img {
-    width: 100%;
-    
-}
-#lastworks {
-text-align: left;
-}
 
 
-
-#logo {
-    margin-top: -50px;
-}
-
-#content {
-margin-top: -65px
-}
