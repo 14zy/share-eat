@@ -22,6 +22,15 @@ body {
     width: 100%;
 }
 
+#futuredishes {
+    text-align: left;
+    }
+
+
+#futuredishes img {
+    width: 100%;
+}
+
 
 
 #tab-bar {
@@ -34,5 +43,11 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
+.tab {
+    cursor: pointer;
+}
 
-
+.element {
+    text-align: center;
+width: 90%
+}

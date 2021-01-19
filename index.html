@@ -46,99 +46,20 @@
                     </select>
             </div>
         </div>
-
-
-        <div class="row">
-            <div class="col-12" id="lastdishes">
-                <br><br>
-
-                <p>👩‍💻 <b>Нафаня</b> <i class="text-muted">предлагает</i></p>
-                <div class="row">
-                    <div class="col-4">   
-                        <img class="rounded mt-2" src="food/борщ.jpg">
-                    </div>
-                    <div class="col-8">
-                        Вкуснейший борщик
-                        <br>
-                        <span class="badge badge-secondary">Серпуховская</span>
-                        <span class="badge badge-info">21.01</span>
-                    </div>
-                </div>
-            
-                <hr>
-
-                <p>👸 <b>Светуля</b> <i class="text-muted">приготовит завтра</i></p>
-                <div class="row mt-2 mb-2">
-                    <div class="col-4">
-                        <img class="rounded" src="food/картошка.jpg">
-                    </div>
-                    <div class="col-8">
-                        <div class="pt-3">
-                            Жаренная картошка
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-2 mb-2">
-                    <div class="col-4">
-                        <img class="rounded" src="food/пирожок.jpg">
-                    </div>
-                    <div class="col-8" >
-                        <div class="pt-3">
-                            Пирожок
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mt-2 mb-2">
-                    <div class="col-4" >
-                        <img class="rounded" src="food/варенье.jpg">
-                    </div>
-                    <div class="col-8" >
-                        <div class="pt-3">
-                            Варенье
-                        </div>
-                    </div>
-                </div>
-                
-                <span class="badge badge-secondary">Анино</span>
-                <span class="badge badge-primary">10:00</span>
-            
-                <hr>
-
-                <p>🦸‍♂️ <b>Bruck</b> <i class="text-muted">уже приготовил</i></p>
-                <div class="row mt-2 mb-2">
-                    <div class="col-4">
-                        <img class="rounded" src="food/томям.jpg">
-                    </div>
-                    <div class="col-8">
-                        Том ям
-                        <br>
-                        <small>200г</small>
-                        <span class="badge badge-info">Shrimp</span>
-                    </div>
-                </div>
-
-                <div class="row mt-2 mb-2">
-                    <div class="col-4">
-                        <img class="rounded " src="food/рис.jpg">
-                    </div>
-                    <div class="col-8">
-                        Рис с курицей
-                        <br>
-                        <small>200г</small>
-                        <span class="badge badge-warning">Chicken</span>
-                    </div>
-                </div>
-  
-                <span class="badge badge-danger">Парк Культуры</span>
-                <span class="badge badge-primary">15:00</span>
-        
-            </div>
-        </div>
         <br>
 
-        <div class='col-12 jumbotron text-left'>
+        <div class="row">
+            <br>
+            <div class="col-12" id="lastdishes"></div>
+            <div class="col-12" id="futuredishes"></div>
+        
+            <div id='itemInfo'></div>
+            <br>
+        </div>
+
+    </div>  
+
+        <div class='col-12 jumbotron text-left' id="desc">
             Что тут происходит?
             <br><small><muted>
             Вам предлагается кушать и иногда готовить для друзей и близких.
@@ -150,13 +71,13 @@
         <div class="row fixed-bottom" id="tab-bar">
             <div class=" text-center col-12" >
                 <div class="row p-0 m-0">
-                    <div class="col-6" >
-                        ⚫️<br>
-                        СПИСОК
+                    <div class="col-6 tab" onclick="clickToday();" >
+                        <span id="todayIcon">⚫️</span><br>
+                        СЕГОДНЯ
                     </div>
-                    <div class="col-6">
-                        ⚪️<br>
-                        ПРОФИЛЬ
+                    <div class="col-6 tab" onclick="clickTomorrow();" >
+                        <span id="tomorrowIcon">⚪️</span><br>
+                        ЗАВТРА
                     </div>
                 </div>
             </div>
@@ -174,26 +95,8 @@
         crossorigin="anonymous"></script>
 
     <script src="js/google-spreadsheets-db.min.js"></script>
-    <script>
+    <script src="js/verinika.js"></script>
 
-        const db = new GoogleSpreadsheetsDb(
-            'AIzaSyBdjsu_0mERhpzaz79MxeFzhcyqsiniImc',
-            '1aYiKsFBPBYhj_uIE8OQZJe8N-7GF-llPyQDvXaneoOY'
-        );
-
-        db.getAll('portifolio!A1:D3', (err, entries) => {
-
-            console.log(entries);
-            /**
-            * entries will be an array of objects
-            * the object's keys are the column names of your sheet, ie:
-            * [{ name: "First item", description: "some desc." },
-            *  { name: "First item", description: "some desc." }]
-            */
-        })
-
-
-    </script>
 </body>
 
 </html>
