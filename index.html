@@ -54,7 +54,7 @@
             <br>
             <div class="col-12" id="lastdishes"></div>
             <div class="col-12" id="futuredishes"></div>
-            <div id='itemInfo'></div>
+            <div class="col-12" id='itemInfo'></div>
         </div>
 
         <div id='profile'>
@@ -82,7 +82,27 @@
             <br><br>
         </div>
 
-    </div>  
+    </div>
+
+    <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Оплата</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Назад</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="clickTomorrow()">Я отправил</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
         <div class='col-12 jumbotron text-left' id="desc">
             Что тут происходит?
