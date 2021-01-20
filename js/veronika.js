@@ -62,7 +62,7 @@ clickTomorrow = function() {
     $("#futuredishes").css("display", "block");
     
     if (!window.tomorrowLoaded) {
-        db.getAll('eat-orders!A1:L100', (err, rows) => {
+        db.getAll('eat-orders!A1:N100', (err, rows) => {
             showTomorrow(rows);
             window.tomorrowLoaded = true;
         })    
@@ -146,7 +146,7 @@ openItemToday = function(itemId) {
         Время: ` + element.cooking_time + `<br>
         Цена: ` + element.price + `р.<br>
 
-        <br><a onclick="alert('Отправьте 50р на 89268613375 сбер');" class="btn btn-success" >Залог ` + element.price*0.1 + `р.</a>
+        <br><a onclick="alert('Отправьте ` + element.price*0.1 + `р на ` + element.phone + ` сбер');" class="btn btn-success" >Залог ` + element.price*0.1 + `р.</a>
 
         <br><br>
 
