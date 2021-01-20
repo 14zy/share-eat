@@ -19,7 +19,9 @@
 </head>
 
 <body>
+    Еда от друг-друга
     <img src="logo.jpg" alt="" width="100%" id="logo">
+    
     <div class="container">
         <div class="row" id="city-select">
             <div class=" col-12" id="what">
@@ -52,9 +54,32 @@
             <br>
             <div class="col-12" id="lastdishes"></div>
             <div class="col-12" id="futuredishes"></div>
-        
             <div id='itemInfo'></div>
+        </div>
+
+        <div id='profile'>
+            Ваше имя: 
             <br>
+            Телефон:
+            <br>
+            Адрес доставки:
+            <br><br>
+            поддержка по support@eat-list.com
+            <br>
+            Правила сервиса
+            <br><br>
+            Ваши фирменные блюда:
+            <br><br>
+            <img src="https://1000.menu/img/content-v2/63/46/809/pitstsa-domashnyaya_1591686572_16_max.jpg" width="200px">
+            <br>
+            Пицца Пепперони
+            <br>0 заказов
+            <br><br>
+            <img src="https://1000.menu/img/content-v2/63/46/809/pitstsa-domashnyaya_1591686572_16_max.jpg" width="200px">
+            <br>
+             Вегатерианская Пепперони
+            <br>2 заказа
+            <br><br>
         </div>
 
     </div>  
@@ -71,13 +96,17 @@
         <div class="row fixed-bottom" id="tab-bar">
             <div class=" text-center col-12" >
                 <div class="row p-0 m-0">
-                    <div class="col-6 tab" onclick="clickToday();" >
+                    <div class="col-4 tab" onclick="clickToday();" >
                         <span id="todayIcon">⚫️</span><br>
-                        СЕГОДНЯ
+                        СПИСОК
                     </div>
-                    <div class="col-6 tab" onclick="clickTomorrow();" >
+                    <div class="col-4 tab" onclick="clickTomorrow();" >
                         <span id="tomorrowIcon">⚪️</span><br>
-                        ЗАВТРА
+                        ЗАКАЗЫ
+                    </div>
+                    <div class="col-4 tab" onclick="clickProfile();" >
+                        <span id="profileIcon">⚪️</span><br>
+                        ПРОФИЛЬ
                     </div>
                 </div>
             </div>
@@ -95,7 +124,7 @@
         crossorigin="anonymous"></script>
 
     <script src="js/google-spreadsheets-db.min.js"></script>
-    <script src="js/verinika.js"></script>
+    <script src="js/veronika.js"></script>
 
 </body>
 

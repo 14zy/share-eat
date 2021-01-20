@@ -4,7 +4,7 @@ const db = new GoogleSpreadsheetsDb(
 );
 
 
-db.getAll('eat-today!A1:L100', (err, rows) => {
+db.getAll('eat-list!A1:L100', (err, rows) => {
     showToday(rows);
 })
 
@@ -19,9 +19,9 @@ showToday = function (items) {
             <div class="col-8">
             `+element.dish+`
                 <br>
-                <small>`+element.slots+` порции, </small>
+                <small>`+element.slots+` порции </small>
                 
-                <small>приготовлено в `+element.cooking_time+`</small>
+                <small>к `+element.cooking_time+`</small>
                 <br>    
                 <span class="badge badge-secondary">`+element.address+`</span>
                 
@@ -34,6 +34,8 @@ showToday = function (items) {
 
 clickToday = function() {
 
+    $("#profile").css("display", "none");
+
     $("#itemInfo").css("display", "none");
     $("#desc").css("display", "block");
 
@@ -42,32 +44,52 @@ clickToday = function() {
 
     $("#tomorrowIcon").html("⚪️");
     $("#todayIcon").html("⚫️");    
+    $("#profileIcon").html("⚪️");   
 }
 
 clickTomorrow = function() {
 
+    $("#profile").css("display", "none");
+    
     $("#itemInfo").css("display", "none");
     $("#desc").css("display", "block");
 
     $("#tomorrowIcon").html("⚫️");
     $("#todayIcon").html("⚪️");
+    $("#profileIcon").html("⚪️");   
 
     $("#lastdishes").css("display", "none");
     $("#futuredishes").css("display", "block");
     
     if (!window.tomorrowLoaded) {
-        db.getAll('eat-tomorrow!A1:L100', (err, rows) => {
+        db.getAll('eat-orders!A1:L100', (err, rows) => {
             showTomorrow(rows);
             window.tomorrowLoaded = true;
         })    
     }
 }
 
+clickProfile = function() {
+
+    $("#itemInfo").css("display", "none");
+    $("#desc").css("display", "none");
+
+    $("#futuredishes").css("display", "none");
+    $("#lastdishes").css("display", "none");
+
+    $("#profile").css("display", "block");
+
+    $("#todayIcon").html("⚪️");    
+    $("#tomorrowIcon").html("⚪️");
+    $("#profileIcon").html("⚫️");   
+}
+
 showTomorrow = function (items) {
     window.itemsTomorrow = items;
+    
     items.forEach(element => {
     
-        html = `<p>👩‍💻 <b>`+element.userName+`</b> <i class="text-muted">предлагает</i></p>
+        html =  `<p>👩‍💻 <b>`+element.userName+`</b> <i class="text-muted">приготовит для вас</i>
         <div class="row" onclick='openItemTomorrow(`+ element.id +`)'>
             <div class="col-4">   
                 <img class="rounded mt-2" src="`+element.images[0]+`">
@@ -75,11 +97,12 @@ showTomorrow = function (items) {
             <div class="col-8">
             `+element.dish+`
                 <br>
-                <small>`+element.slots+` порции, </small>
+                <small>`+element.slots+` порции </small>
                 
-                <small>будет готово в `+element.cooking_time+`</small>
+                <small>к `+element.cooking_time+`</small>
                 <br>
                 <span class="badge badge-secondary">`+element.address+`</span>
+                <small>К оплате: `+element.price+`р</small>
                 
             </div>
         </div>
@@ -89,64 +112,71 @@ showTomorrow = function (items) {
 
 }
 
-openItemToday = function(itemId) {
-    element = window.itemsToday[itemId-1];
+openItems = function() {
 
     $("#lastdishes").css("display", "none");
     $("#futuredishes").css("display", "none");
     $("#itemInfo").css("display", "block");
     $("#desc").css("display", "none");
-    
+    //Todo hide logo
+}
+
+openItemToday = function(itemId) {
+
+    openItems();
+
+
+    element = window.itemsToday[itemId-1];
+
+
     $("#itemInfo").html(`
+
     ` + element.dish + `
-    <br>
+        <br>
 
-    <img class="rounded mt-2 element" src="`+element.images[0]+`"><br>
-    ` + element.description + `
-    <br><br>
-    Кол-во: ` + element.slots + `<br>
-    Район: ` + element.address + `<br>
-    Цена: ` + element.price + `р.<br>
-    
-    <br>
-    Дата: ` + element.cooking_date + `<br>
-    Время: ` + element.cooking_time + `<br>
+        <img class="rounded mt-2 element" src="`+element.images[0]+`"><br>
+        ` + element.description + `
+        <br><br>
+        Кол-во: ` + element.slots + `<br>
+        Район: ` + element.address + `<br>
+        
+        
+        <br>
+        Дата: ` + element.cooking_date + `<br>
+        Время: ` + element.cooking_time + `<br>
+        Цена: ` + element.price + `р.<br>
 
-    <br><a href="#" class="btn btn-success" >Купить</a>
+        <br><a onclick="alert('Отправьте 50р на 89268613375 сбер');" class="btn btn-success" >Залог ` + element.price*0.1 + `р.</a>
 
-    <br>
+        <br><br>
 
     `);
 
 }
 
 openItemTomorrow = function(itemId) {
+
+    openItems();
     element = window.itemsTomorrow[itemId-1];
     
 
-    $("#lastdishes").css("display", "none");
-    $("#futuredishes").css("display", "none");
-    $("#itemInfo").css("display", "block");
-    $("#desc").css("display", "none");
 
     $("#itemInfo").html(`
     ` + element.dish + `
-    <br>
+        <br>
 
-    <img class="rounded mt-2 element" src="`+element.images[0]+`"><br>
-    ` + element.description + `
-    <br><br>
-    Кол-во: ` + element.slots + `<br>
-    Район: ` + element.address + `<br>
-    Цена: ` + element.price + `р.<br>
-    
-    <br>
-    Дата: ` + element.cooking_date + `<br>
-    Время: ` + element.cooking_time + `<br>
-
-    <br><a href="#" class="btn btn-success" >Купить</a>
-
-    <br>
+        <img class="rounded mt-2 element" src="`+element.images[0]+`"><br>
+        ` + element.description + `
+        <br><br>
+        Кол-во: ` + element.slots + `<br>
+        Район: ` + element.address + `<br>
+        
+        
+        <br>
+        Дата: ` + element.cooking_date + `<br>
+        Время: ` + element.cooking_time + `<br>
+        Цена: ` + element.price + `р.<br>
+        <br><br>
 
     `);
 
