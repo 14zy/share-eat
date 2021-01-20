@@ -102,7 +102,11 @@ showTomorrow = function (items) {
                 <small>к `+element.cooking_time+`</small>
                 <br>
                 <span class="badge badge-secondary">`+element.address+`</span>
-                <small>К оплате: `+element.price+`р</small>
+                <br>
+                <small>Цена: <s>`+element.price+`р</s> `+ element.price*0.9 +`р</small>
+                <br>
+                <small>`+element.phone+`</small>
+                
                 
             </div>
         </div>
@@ -137,7 +141,7 @@ openItemToday = function(itemId) {
         <img class="rounded mt-2 element" src="`+element.images[0]+`"><br>
         ` + element.description + `
         <br><br>
-        Кол-во: ` + element.slots + `<br>
+        Количество порций: ` + element.slots + `<br>
         Район: ` + element.address + `<br>
         
         
@@ -175,7 +179,7 @@ openItemTomorrow = function(itemId) {
         <br>
         Дата: ` + element.cooking_date + `<br>
         Время: ` + element.cooking_time + `<br>
-        Цена: ` + element.price + `р.<br>
+        Цена: <s>`+element.price+`р</s> `+ element.price*0.9 +`р
         <br><br>
 
     `);
