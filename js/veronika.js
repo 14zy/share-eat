@@ -150,7 +150,7 @@ openItemToday = function(itemId) {
         Время: ` + element.cooking_time + `<br>
         Цена: ` + element.price + `р.<br>
 
-        <br><a onclick="showModal('` + element.price*0.1 + `', '` + element.phone + `');" class="btn btn-success" >Залог ` + element.price*0.1 + `р.</a>
+        <br><a onclick="showModal('` + element.price*0.1 + `', '` + element.phone + `');" class="btn btn-success" >Купить ` + element.price*0.1 + `р.</a>
 
         <br><br>
 

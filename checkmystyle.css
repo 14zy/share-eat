@@ -5,12 +5,12 @@ body {
 }
 
 #logo {
-    margin-top: -50px;
+    /* margin-top: -50px; */
 }
 
 
 #city-select {
-    margin-top: -60px
+    margin-top: 20px
     }
 
 #lastdishes {
